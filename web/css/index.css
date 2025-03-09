@@ -989,6 +989,7 @@ footer .footer_bottom .footer_menu ul li a {
 .profile .profile_navigation .user_login_info .logout a {
   font-size: 18px;
   line-height: 21px;
+  text-decoration: none;
   color: #3F2AFF;
 }
 
@@ -999,14 +1000,23 @@ footer .footer_bottom .footer_menu ul li a {
 }
 
 .profile .profile_navigation ul li {
-  margin-bottom: 25px;
+  margin-bottom: 15px;
 }
 
 .profile .profile_navigation ul li a {
   font-weight: 500;
-  font-size: 18px;
+  font-size: 22px;
   line-height: 21px;
-  color: #101010;
+  display: block;
+  color: #0a58ca;
+  border: 2px solid #0a58ca;
+  border-radius: 40px;
+  padding: 10px;
+  text-align: center;
+}
+.profile .profile_navigation ul li a:hover{
+  background-color: #0a58ca;
+  color: #fff;
 }
 
 .profile .user_orders .order_item {
@@ -1557,7 +1567,8 @@ footer .footer_bottom .footer_menu ul li a {
   vertical-align: middle;
 }
 .profile .profile_navigation ul li a.active{
-  color: #0a58ca;
+  background-color: #0a58ca;
+  color: #fff;
 }
 
 .header_bottom .container{

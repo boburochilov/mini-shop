@@ -122,6 +122,7 @@ $requirements = array(
         'condition' => $imagickOK,
         'by' => '<a href="http://www.yiiframework.com/doc-2.0/yii-captcha-captcha.html">Captcha</a>',
         'memo' => $imagickMemo,
+	
     ),
     // PHP ini :
     'phpExposePhp' => array(

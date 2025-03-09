@@ -66,13 +66,13 @@
                     <div class="others-option">
                         <div class="option-item">
                             <div class="wishlist-btn">
-                                <a href="#" data-bs-toggle="modal" data-bs-target="#shoppingWishlistModal"><i class='bx bx-heart'></i></a>
+                                <a href="#" data-bs-toggle="modal"><i class='bx bx-heart'></i></a>
                             </div>
                         </div>
 
                         <div class="option-item">
                             <div class="cart-btn">
-                                <a href="#"><i class='bx bx-shopping-bag'></i></a>
+                                <a href="#" data-bs-toggle="modal"><i class='bx bx-shopping-bag'></i></a>
                             </div>
                         </div>
 

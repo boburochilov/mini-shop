@@ -26,7 +26,7 @@
             </a>
         </li>
 
-        <li class="nav-item">
+        <li class="nav-item logout">
             <a class="nav-link" href="<?=\yii\helpers\Url::to(['/admin/user/logout'])?>">
                 <i class="fas fa-door-closed mr-2"></i> Logout
             </a>

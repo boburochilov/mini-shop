@@ -32,6 +32,7 @@ class AppAsset extends AssetBundle
         "css/rangeSlider.min.css",
         "css/magnific-popup.min.css",
         "css/index.css",
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css",
         "css/style.css",
         "css/responsive.css",
         "https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css"
@@ -41,6 +42,7 @@ class AppAsset extends AssetBundle
         "js/popper.min.js",
         "js/bootstrap.min.js",
         "js/magnific-popup.min.js",
+        "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/js/all.min.js",
         "js/fancybox.min.js",
         "js/owl.carousel.min.js",
         "js/owl.carousel2.thumbs.min.js",

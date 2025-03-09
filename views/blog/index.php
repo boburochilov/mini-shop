@@ -88,7 +88,7 @@ use yii\bootstrap4\LinkPager;
                                 </div>
 
                                 <div class="post-content">
-                                    <h3><a href="#"><?=$model->title?></a></h3>
+                                    <h3><a href="<?=\yii\helpers\Url::to(['blog/view','id' => $model->id])?>"><?=$model->title?></a></h3>
                                     <ul class="post-meta align-items-center d-flex">
                                         <li><?=$model->created_date?></li>
                                     </ul>

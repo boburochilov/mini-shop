@@ -538,6 +538,20 @@
 		});
 	});
 
+	$('.logout a').on('click',function (e) {
+		let answer = confirm("Вы хотите выйти из своей учетной записи?")
+		if (!answer){
+			return false;
+		}
+	})
+
+	$('.cancel').on('click',function (e) {
+		let answer = confirm("Вы хотите отменить свой заказ?")
+		if (!answer){
+			return false;
+		}
+	})
+
 
 
 }(jQuery));

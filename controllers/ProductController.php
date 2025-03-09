@@ -9,6 +9,7 @@ use app\models\ProductColor;
 use app\models\ProductImages;
 use app\models\Reviews;
 use app\models\SellingBrands;
+use app\models\TelegramNotificator;
 use app\models\WishModel;
 use Yii;
 use yii\data\Pagination;
@@ -32,7 +33,7 @@ class ProductController extends Controller
             ->limit($pages->limit)
             ->all();
 
-        // pagination
+        // paginationw
 
         return $this->render('by-cat',compact('models','pages','productCategory','allProductCategories','allProductBrands','allProductColors','bestSellers'));
     }
@@ -79,6 +80,8 @@ class ProductController extends Controller
 
         return $this->render('by-color',compact('query','pages','models','productColor','allProductCategories','allProductBrands','allProductColors','bestSellers'));
     }
+
+
 
     public function actionSelect(){
         $min = \Yii::$app->request->get('min');
@@ -135,7 +138,7 @@ class ProductController extends Controller
     public function actionView($id)
     {
         $models = Product::findOne($id);
-        $relatedProducts = Product::find()->where(['category_id' => $models->category_id])->andWhere(['not in','id',$id])->all();
+        $relatedProducts = Product::find()->where(['category_id' => $models->category_id])->all();
         $productCategory = ProductCategory::findOne($models->category_id);
         $productImages = ProductImages::find()->where(['product_id' => $id])->all();
         $productBrand = SellingBrands::findOne($models->brand_id);
@@ -147,6 +150,9 @@ class ProductController extends Controller
             $comment->created_date = date("Y-m-d H:i:s");
             $comment->updated_date = date("Y-m-d H:i:s");
             if ($comment->save()){
+                Yii::$app->session->setFlash('review-success','Ваш комментарий был успешно отправлен!');
+                $notificator = new TelegramNotificator();
+                $notificator->sendReviewNotification($comment);
                 return $this->refresh();
             }
         }
@@ -160,7 +166,7 @@ class ProductController extends Controller
         $max = \Yii::$app->request->get('max');
 
         $models = Product::find()->where(['like','title',$search])->all();
-        $bestSellers = Product::find()->where(['best_selling' => 1])->andWhere(['status' => 1])->limit(3)->all();
+        $bestSellers = Product::find()->where(['best_selling' => 1])->andWhere(['sxtatus' => 1])->limit(3)->all();
         $allProductCategories = ProductCategory::find()->where(['status' => 1])->all();
         $allProductBrands = SellingBrands::find()->where(['status' => 1])->all();
         $allProductColors = ProductColor::find()->where(['status' => 1])->all();

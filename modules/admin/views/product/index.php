@@ -1,4 +1,4 @@
-<?php
+    <?php
 
 use app\models\Product;
 use app\models\ProductCategory;

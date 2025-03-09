@@ -9,7 +9,8 @@ use yii\bootstrap4\LinkPager;
         <div class="page-title-content">
             <h1>Взгляд в блоге</h1>
             <ul>
-                <li><a href="#">Главная</a></li>
+                <li><a href="<?=\yii\helpers\Url::home()?>">Главная</a></li>
+                <li><a href="<?=\yii\helpers\Url::to(['blog/'])?>">Блоги</a></li>
                 <li><?=$blogCategory->title?></li>
             </ul>
         </div>
@@ -91,7 +92,7 @@ use yii\bootstrap4\LinkPager;
                                 </div>
 
                                 <div class="post-content">
-                                    <h3><a href="#"><?=$model->title?></a></h3>
+                                    <h3><a href="<?=\yii\helpers\Url::to(['blog/view','id' => $model->id])?>"><?=$model->title?></a></h3>
                                     <ul class="post-meta align-items-center d-flex">
                                         <li><?=$model->created_date?></li>
                                     </ul>
@@ -114,6 +115,18 @@ use yii\bootstrap4\LinkPager;
 
                             </div>
                         </div>
+                    </div>
+
+                <?php else:?>
+
+                    <div class="no_photo text-center">
+                        <h1 class="text">
+                            В категории <?=$blogCategory->title?> пока нет Новостей
+
+                        </h1>
+                        <h4 style="color: #2a96ff">Скоро будут новые блоги :)</h4>
+                        <img style="text-align: center;" src="/assets/img/no_product.png" alt="img">
+
                     </div>
 
                 <?php endif;?>

@@ -69,7 +69,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6">
-                    <p>Copyright @ 2021 Дродо. Разработано <a href="https://t.me/bobur_LLC" target="_blank">Bobur Ochilov</a></p>
+                    <p>Copyright @ 2021 Дродо. Разработано <a href="https://t.me/httpBobur" target="_blank">Bobur Ochilov</a></p>
                 </div>
 
                 <div class="col-lg-6 col-md-6">

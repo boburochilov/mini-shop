@@ -14,7 +14,7 @@
 
                             <div class="content">
                                 <span class="sub-title"><?=$model->title?></span>
-                                <h3><a href="#"><?=$model->sub_title?></a></h3>
+                                <h3><a href="<?=\yii\helpers\Url::to(['product/index'])?>"><?=$model->sub_title?></a></h3>
                                 <div class="btn-box">
                                     <div class="d-flex align-items-center">
                                         <a href="<?=\yii\helpers\Url::to(['product/index'])?>" class="default-btn"><i class="flaticon-trolley"></i> Купить сейчас</a>

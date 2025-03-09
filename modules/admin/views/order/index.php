@@ -17,15 +17,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <h1><?= Html::encode($this->title) ?></h1>
 
-    <p>
-        <?= Html::a('Create Order', ['create'], ['class' => 'btn btn-success']) ?>
-    </p>
-
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <div class="card">
 
-        <div class="card-body">
+        <div class="card-body status_changer">
 
             <?= GridView::widget([
                 'dataProvider' => $dataProvider,
@@ -149,7 +145,7 @@ BUTTONS;
                     [
                         'attribute' => 'statusChanger',
                         'value' => function($data){
-                            $result = "
+                            $result = "    
                         <div class='btn-group w-100'>  
                             <a href='" . Url::to(['/admin/order/change-status','id' => $data->id,'status'=>2]) . "' data-toggle='tooltip' data-placement='bottom' title='Подтверждение' class='btn btn-sm btn-warning'><i class='fas fa-check-circle'></i></a>
                             <a href='" . Url::to(['/admin/order/change-status','id' => $data->id,'status'=>3]) . "' data-toggle='tooltip' data-placement='bottom' title='Оплаченный' class='btn btn-sm btn-success'><i class='fas fa-credit-card'></i></a>
@@ -205,7 +201,7 @@ BUTTONS;
                             }
 
                             return"
-                        <div class='btn btn-danger btn-group'>
+                        <div class='badge badge-danger status0'>
                             Заказ находится в пути, доставлен или отменен
                         </div>
                     ";

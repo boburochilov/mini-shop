@@ -25,6 +25,16 @@ use yii\bootstrap4\ActiveForm;
 <section class="product-details-area pt-70 pb-40">
     <div class="container">
         <div class="row">
+
+            <?php if (Yii::$app->session->hasFlash('review-success')):?>
+
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <?=Yii::$app->session->getFlash('review-success')?>
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                </div>
+
+            <?php endif;?>
+
             <div class="col-lg-5 col-md-12">
                 <div class="products-details-image">
 
@@ -67,7 +77,7 @@ use yii\bootstrap4\ActiveForm;
                     </div>
 
                     <div class="products-review">
-                        <a href="#" class="rating-count"> reviews</a>
+                        <a href="#reviews" class="rating-count"> Отзывы</a>
                         <?=\app\models\Reviews::getOneCount($models->id)?>
                     </div>
 
@@ -107,8 +117,8 @@ use yii\bootstrap4\ActiveForm;
             <div class="col-lg-12 col-md-12">
                 <div class="products-details-tabs">
                  <ul class="nav nav-tabs" id="myTab" role="tablist">
-                        <li class="nav-item"><a class="nav-link active" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description">Description</a></li>
-                        <li class="nav-item"><a class="nav-link" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews">Reviews (<?=\app\models\Reviews::getOneCount($models->id)?>)</a></li>
+                        <li class="nav-item"><a class="nav-link active" id="description-tab" data-bs-toggle="tab" href="#description" role="tab" aria-controls="description">Описание</a></li>
+                        <li class="nav-item"><a class="nav-link" id="reviews-tab" data-bs-toggle="tab" href="#reviews" role="tab" aria-controls="reviews">Отзывы (<?=\app\models\Reviews::getOneCount($models->id)?>)</a></li>
                     </ul>
 
                     <div class="tab-content" id="myTabContent">
@@ -207,66 +217,62 @@ use yii\bootstrap4\ActiveForm;
             <?php if (!empty($relatedProducts)): ?>
 
                 <div class="products-slides owl-carousel owl-theme">
-
                     <?php foreach ($relatedProducts as $relatedProduct): ?>
-
                         <div class="single-products-box">
-                        <div class="image">
-                            <?php $image = \app\components\StaticFunctions::getImage('product',$relatedProduct->id,$relatedProduct->image)?>
-                            <a href="<?=\yii\helpers\Url::to(['product/view','id' => $relatedProduct->id])?>" class="d-block"><img src="<?=$image?>" alt="image"></a>
+                            <div class="image">
+                                <?php $image = \app\components\StaticFunctions::getImage('product',$relatedProduct->id,$relatedProduct->image)?>
+                                <a href="<?=\yii\helpers\Url::to(['product/view','id' => $relatedProduct->id])?>" class="d-block"><img src="<?=$image?>" alt="image"></a>
 
-                            <?php if ($relatedProduct->sale == 1): ?>
+                                <?php if ($relatedProduct->sale == 1): ?>
 
-                                <div class="sale">Sale</div>
+                                    <div class="sale">Sale</div>
 
-                            <?php else:?>
-
-
-
-                            <?php endif;?>
-
-                            <?php if ($relatedProduct->new == 1): ?>
-
-                                <div class="new">New</div>
-
-                            <?php else:?>
+                                <?php else:?>
 
 
 
-                            <?php endif;?>
+                                <?php endif;?>
 
-                            <div class="buttons-list">
-                                <ul>
-                                    <li>
-                                        <div class="cart-btn">
-                                            <a href="#" data-id="<?=$relatedProduct->id?>">
-                                                <i class='bx bxs-cart-add'></i>
-                                                <span class="tooltip-label">Добавить в корзину</span>
-                                            </a>
-                                        </div>
-                                    </li>
-                                    <li>
-                                        <div class="wishlist-btn">
-                                            <a href="#" data-id="<?=$relatedProduct->id?>">
-                                                <i class='bx bx-heart'></i>
-                                                <span class="tooltip-label">Добавить в список желаний</span>
-                                            </a>
-                                        </div>
-                                    </li>
-                                </ul>
+                                <?php if ($relatedProduct->new == 1): ?>
+
+                                    <div class="new">New</div>
+
+                                <?php else:?>
+
+
+
+                                <?php endif;?>
+
+                                <div class="buttons-list">
+                                    <ul>
+                                        <li>
+                                            <div class="cart-btn">
+                                                <a href="#" data-id="<?=$relatedProduct->id?>">
+                                                    <i class='bx bxs-cart-add'></i>
+                                                    <span class="tooltip-label">Добавить в корзину</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="wishlist-btn">
+                                                <a href="#" data-id="<?=$relatedProduct->id?>">
+                                                    <i class='bx bx-heart'></i>
+                                                    <span class="tooltip-label">Добавить в список желаний</span>
+                                                </a>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="content">
+                                <h3><a href="<?=\yii\helpers\Url::to(['product/view','id' => $relatedProduct->id])?>"><?=$relatedProduct->title?></a></h3>
+                                <div class="price">
+                                    <span class="new-price">$<?=number_format($relatedProduct->price, 2, ',', ' ')?></span>
+                                </div>
                             </div>
                         </div>
-
-                        <div class="content">
-                            <h3><a href="<?=\yii\helpers\Url::to(['product/view','id' => $relatedProduct->id])?>"><?=$relatedProduct->title?></a></h3>
-                            <div class="price">
-                                <span class="new-price">$<?=number_format($relatedProduct->price, 2, ',', ' ')?></span>
-                            </div>
-                        </div>
-                    </div>
-
                     <?php endforeach;?>
-
                 </div>
 
             <?php endif;?>

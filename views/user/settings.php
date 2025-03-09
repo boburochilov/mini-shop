@@ -20,11 +20,12 @@
                 <div class="profile_navigation">
                     <div class="user_login_info">
                         <div class="username"><?=$model->username;?></div>
-                        <div class="logout"><a href="<?=\yii\helpers\Url::to(['user/logout'])?>">выйти</a></div>
+                        <div class="logout"><a href="<?=\yii\helpers\Url::to(['user/logout'])?>">ВЫЙТИ <i class="fa-solid fa-arrow-right-from-bracket"></i></a></div>
                     </div>
                     <ul>
-                        <li><a href="<?=\yii\helpers\Url::to(['user/profile'])?>">Заказы</a></li>
-                        <li><a href="<?=\yii\helpers\Url::to(['user/settings'])?>" class="active">настройки</a></li>
+                        <li><a href="<?=\yii\helpers\Url::to(['user/profile'])?>">Заказы <i class="fa-solid fa-user"></i></a></li>
+                        <li><a href="<?=\yii\helpers\Url::to(['user/settings'])?>" class="active">Настройки <i class="fa-solid fa-gear"></i></a></li>
+                        <li><a href="<?=\yii\helpers\Url::to(['blog/'])?>">Блоги <i class="fa-solid fa-newspaper"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -63,7 +64,7 @@
                             <div class="settings_title">Смена пароля</div>
 
                             <div class="form_item">
-                                <?=$form->field($model,'password')->passwordInput(['value' => ""])?>
+                                <?=$form->field($model,'newPassword')->passwordInput(['value' => ""])?>
                             </div>
 
                         </div>

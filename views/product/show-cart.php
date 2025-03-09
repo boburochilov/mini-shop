@@ -55,7 +55,8 @@ if (!empty($_SESSION['cart']['product'])): ?>
             </div>
         </div>
     </div>
-    <!-- End Shopping Cart Modal -->
+    <!-- End Shopping Cart Modal --
+    >
 <?php else: ?>
 
     <div class="modal-content">

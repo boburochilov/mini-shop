@@ -25,11 +25,12 @@ use yii\helpers\Url;
                 <div class="profile_navigation">
                     <div class="user_login_info">
                         <div class="username text-capitalize"><?=$model->username;?></div>
-                        <div class="logout"><a href="<?=\yii\helpers\Url::to(['user/logout'])?>">выйти</a></div>
+                        <div class="logout"><a href="<?=\yii\helpers\Url::to(['user/logout'])?>">ВЫЙТИ <i class="fa-solid fa-arrow-right-from-bracket"></i></a></div>
                     </div>
                     <ul>
-                        <li><a href="<?=\yii\helpers\Url::to(['user/profile'])?>" class="active">Заказы</a></li>
-                        <li><a href="<?=\yii\helpers\Url::to(['user/settings'])?>">Настройки</a></li>
+                        <li><a href="<?=\yii\helpers\Url::to(['user/profile'])?>" class="active">Заказы <i class="fa-solid fa-user"></i></a></li>
+                        <li><a href="<?=\yii\helpers\Url::to(['user/settings'])?>">Настройки <i class="fa-solid fa-gear"></i></a></li>
+                        <li><a href="<?=\yii\helpers\Url::to(['blog/'])?>">Блоги <i class="fa-solid fa-newspaper"></i></a></li>
                     </ul>
                 </div>
             </div>
@@ -120,7 +121,7 @@ use yii\helpers\Url;
 
                                                         ?>
 
-                                                    <div class="product_item">
+                                                    <div style="margin-bottom: 60px" class="product_item">
                                                         <div class="product_image">
                                                             <a href="<?=\yii\helpers\Url::to(['/product/view','id'=>$product->id])?>"><img src="<?=$image?>" alt=""></a>
                                                         </div>
@@ -143,19 +144,19 @@ use yii\helpers\Url;
                                             <div class="order_action">
                                                 <div class="order_action_info">
                                                     <div class="info_item">
-                                                        <span class="info_name">Доставка: </span>
-                                                        <span class="info_value">транспортной компанией</span>
+                                                        <span class="info_name">Общее Сумма заказа: </span>
+                                                        <span class="info_value general_price"><?=number_format($order->total_product_price)?> $</span>
                                                     </div>
                                                     <div class="info_item">
-                                                        <span class="info_name">Сумма заказа: </span>
-                                                        <span class="info_value general_price"><?=number_format($order->total_product_price)?> $</span>
+                                                        <span class="info_name">Общее количество заказа: </span>
+                                                        <span class="info_value general_price"><?=number_format($order->total_product_count)?></span>
                                                     </div>
                                                 </div>
                                                 <div class="order_action_buttons">
 
                                                     <?php if ($order->status == 1): ?>
 
-                                                        <a href="<?=Url::to(['/user/change-status','id' => $order->id,'status'=>6])?>" class="btn btn-sm btn-danger w-100 text-center"> Отмена </a>
+                                                        <a href="<?=Url::to(['/user/change-status','id' => $order->id,'status'=>6])?>" class="cancel btn btn-sm btn-danger w-100 text-center"> Отмена </a>
 
                                                     <?php else:?>
 
@@ -165,7 +166,7 @@ use yii\helpers\Url;
 
                                                     <?php if ($order->status == 2): ?>
 
-                                                        <a href="<?=Url::to(['/user/change-status','id' => $order->id,'status'=>6])?>" class="btn btn-sm btn-danger w-100 text-center mb-2"> Отмена </a>
+                                                        <a href="<?=Url::to(['/user/change-status','id' => $order->id,'status'=>6])?>" class="cancel btn btn-sm btn-danger w-100 text-center mb-2"> Отмена </a>
 
                                                         <a target="_blank" href="https://t.me/bobur_LLC" class="button button-blue w-100 text-center">Оплатить</a>
 
@@ -177,7 +178,7 @@ use yii\helpers\Url;
 
                                                     <?php if ($order->status == 3): ?>
 
-                                                        <a href="<?=Url::to(['/admin/order/change-status','id' => $order->id,'status'=>6])?>" class="btn btn-sm btn-danger"> Отмена </a>
+                                                        <a href="<?=Url::to(['/admin/order/change-status','id' => $order->id,'status'=>6])?>" class="cancel btn btn-sm btn-danger"> Отмена </a>
 
                                                     <?php else:?>
 
@@ -201,7 +202,17 @@ use yii\helpers\Url;
 
                     <?php else:?>
 
-                        <div class="alert alert-warning">Вы еще не разместили заказ :(</div>
+                        <!-- Start 404 Error Area -->
+                        <section class="error-area pb-5" style="margin-top: -70px;">
+                            <div class="container">
+                                <div class="error-content">
+                                    <img style="width: 50%" src="/assets/img/no_order.jpg" alt="image">
+                                    <h3 style="margin: 0; padding: 0;">Вы еще не разместили заказ :(</h3>
+                                    <a style="margin-top: 20px" href="/" class="default-btn"><i class="flaticon-left-chevron"></i> Вернуться на главную</a>
+                                </div>
+                            </div>
+                        </section>
+                        <!-- End 404 Error Area -->
 
                     <?php endif; ?>
                 </div>

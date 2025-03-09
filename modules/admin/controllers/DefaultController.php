@@ -18,7 +18,8 @@ class DefaultController extends Controller
         if (Yii::$app->user->getId()){
             $user = User::findOne(Yii::$app->user->getId());
             if ($user->status < 99){
-                echo "Как вы сюда попали?! <a href='/'>Назад</a>";die;
+                echo "Как вы сюда попали?! <a href='/'>Назад</a> или <br>",
+                "<a href='/user/logout'>выйти</a>";die;
             }
         }
 
@@ -60,4 +61,6 @@ class DefaultController extends Controller
     public function actionError(){
         return $this->render('error');
     }
+
+
 }

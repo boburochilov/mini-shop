@@ -13,7 +13,7 @@
 <!-- End Page Title Area -->
 
 <!-- Start Checkout Area -->
-<section class="checkout-area ptb-70">
+<section class="checkout-area">
     <div class="container">
 
         <form>
@@ -155,7 +155,28 @@
 
                 <?php else:?>
 
-                    <div class="alert alert-warning">Ваша корзина пуста! :(</div>
+                    <div class="modal-content" style="border: none">
+
+                        <div class="modal-body">
+
+                            <div class="row">
+
+                                <div class="col-md-12">
+
+                                    <div class="empty_cart">
+
+                                        <img class="d-flex" style="margin: 0 auto" src="/assets/img/cart.png" alt="img">
+                                        <h3 class="text-primary text-bold text-center">Ваша корзина пуста! :(</h3>
+                                        <a href="<?=\yii\helpers\Url::to(['/product'])?>" class="btn btn-primary"><i class='bx bx-shopping-bag'></i> На страницу продуктов</a>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
 
                 <?php endif;?>
 

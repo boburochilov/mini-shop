@@ -76,6 +76,12 @@ class UserController extends DefaultController
         if ($this->request->isPost) {
             if ($model->load($this->request->post()) && $model->save()) {
                 $image = UploadedFile::getInstance($model,'avatar');
+
+                if(!empty($model->password)){
+                    $model->password = Yii::$app->security->generatePasswordHash($model->password);
+                    $model->save();
+                }
+
                 if (!empty($image)){
                     $model->avatar = StaticFunctions::saveImage('user',$model->id,$image);
                     $model->save();
@@ -102,8 +108,13 @@ class UserController extends DefaultController
     {
         $model = $this->findModel($id);
         $oldImage = $model->avatar;
-        $model->password = '';
+        $oldPassword = $model->password;
         if ($this->request->isPost && $model->load($this->request->post())) {
+            if(!empty($model->password)){
+                $model->password = Yii::$app->security->generatePasswordHash($model->password);
+            }else{
+                $model->password = $oldPassword;
+            }
             $model->avatar = $oldImage;
             $image = UploadedFile::getInstance($model,'avatar');
             if (!empty($image)){

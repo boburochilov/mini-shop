@@ -16,6 +16,25 @@
     }
   })
 
+  $('.status_changer .btn').on('click',function (e) {
+    let answer = confirm("Вы хотите сделать этот запрос?!")
+    if (!answer){
+      return false;
+    }
+  })
+
+  $('.logout a').on('click',function (e) {
+    let answer = confirm("Вы хотите выйти из своей учетной записи?")
+    if (!answer){
+      return false;
+    }
+  })
+
+  $('.status_changer .status0').on('click',function (e) {
+    alert("Заказ находится в пути, доставлен или отменен\n");
+  })
+
+
 
   'use strict'
 

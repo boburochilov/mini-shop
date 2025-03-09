@@ -25,7 +25,7 @@ class RegisterForm extends Model
     public function register(){
         $model = new User();
         $model->username = $this->username;
-        $model->password = $this->password;
+        $model->password = Yii::$app->security->generatePasswordHash($this->password);
         $model->email = $this->email;
         $model->status = 1;
         if ($model->save()){

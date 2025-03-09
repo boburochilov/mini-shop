@@ -52,6 +52,7 @@ class UserController extends Controller
         $model = new RegisterForm();
         if (\Yii::$app->request->isPost && $model->load(\Yii::$app->request->post())){
             if ($model->validate() && $model->register()){
+
                 \Yii::$app->session->setFlash('register-success', 'Аккаунт успешно создан!');
                 return $this->redirect('login');
             }
@@ -62,7 +63,13 @@ class UserController extends Controller
 
     public function actionSettings(){
         $model = User::findOne(Yii::$app->user->getId());
+
         if ($this->request->isPost && $model->load($this->request->post())){
+
+            if(!empty($model->newPassword)){
+                $model->password = Yii::$app->security->generatePasswordHash($model->newPassword);
+            }
+
             if ($model->save()){
                 Yii::$app->session->setFlash('settings-success','Данные успешно сохранены!');
                 return $this->redirect('profile');
